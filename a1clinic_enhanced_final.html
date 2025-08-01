@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A1 Physio And Rehab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f9ff; color: #333; }
+    header { background: white; padding: 15px 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 999; }
+    h1, h2, h3 { color: #1a3e72; }
+    section { padding: 40px 20px; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-in-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .btn {
+      padding: 12px 30px;
+      background: #1a73e8;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #1557b0; }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+    .hero .btn { margin-top: 20px; position: relative; top: -10px; }
+    .about, .services, .contact {
+      background: white;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .service-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #1a3e72;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 40px;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1a73e8;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: none;
+      cursor: pointer;
+      z-index: 999;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form { max-width: 450px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>A1 Physio And Rehab - Home Center</h1>
+</header>
+
+<section class="hero fade-in">
+  <h2>Comprehensive Physiotherapy At Your Doorstep</h2>
+  <p>Personalized care. Expert therapists. Your recovery, our priority.</p>
+  <a href="#book" class="btn">Book an Appointment</a>
+</section>
+
+<section class="about fade-in">
+  <h2>About Us</h2>
+  <p>We bring expert physiotherapy care to your home, offering personalized rehabilitation for faster recovery and better quality of life.</p>
+</section>
+
+<section class="services fade-in">
+  <h2>Our Services</h2>
+  <div class="service-grid">
+    <div class="service-card"><h3>Electro Therapy</h3><p>Ultrasound, TENS, IFT, etc.</p></div>
+    <div class="service-card"><h3>Manual Therapy</h3><p>Joint mobilization, PNF, massage.</p></div>
+    <div class="service-card"><h3>Exercise Therapy</h3><p>Stretching, strengthening, rehab plans.</p></div>
+  </div>
+</section>
+
+<section class="contact fade-in" id="book">
+  <h2>Book an Appointment</h2>
+  <form style="margin-top: 20px;">
+    <label>Name</label>
+    <input type="text" required autofocus />
+    <label>Phone</label>
+    <input type="tel" required />
+    <label>Message</label>
+    <textarea required rows="5"></textarea>
+    <br><br>
+    <button type="submit" class="btn" style="width:100%;">Submit</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 A1 Physio And Rehab Center. All rights reserved.</p>
+</footer>
+
+<div class="back-to-top" id="backToTop">↑</div>
+
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  faders.forEach(el => observer.observe(el));
+
+  const backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+  });
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
